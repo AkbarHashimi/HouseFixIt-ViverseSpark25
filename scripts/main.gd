@@ -34,5 +34,36 @@ extends Node
 
 
 '''
+
+var delay: int = 0
+@onready var player = $Player
+
+func _ready():
+	player.becomeHuman()
+
+func _process(delta):
 	
+	var move_x: int = 0
+	var move_y: int = 0
 	
+	if (delay > 0):
+		delay -= 1
+		return
+	
+	if (Input.is_key_pressed(KEY_X)):
+		player.becomeHuman()
+	elif (Input.is_key_pressed(KEY_Z)):
+		player.becomeCar()
+		
+	if (Input.is_action_pressed("ui_right")):
+		$Player.move_local_x(64)
+		delay = 20
+	elif (Input.is_action_pressed("ui_left")):
+		player.move_local_x(-64)
+		delay = 20
+	elif (Input.is_action_pressed("ui_up")):
+		player.move_local_y(-64)
+		delay = 20
+	elif (Input.is_action_pressed("ui_down")):
+		player.move_local_y(64)
+		delay = 20
