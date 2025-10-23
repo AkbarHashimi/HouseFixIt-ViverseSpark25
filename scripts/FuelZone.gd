@@ -8,7 +8,7 @@ func _ready():
 	
 func add_gas():
 	disable_zone()
-	get_tree().call_group("Player", "add_gas")
+	get_tree().call_group("Level", "add_gas")
 
 func disable_zone():
 	visible = false

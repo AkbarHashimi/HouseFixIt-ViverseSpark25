@@ -8,7 +8,7 @@ func _ready():
 	
 func add_score():
 	disable_house()
-	get_tree().call_group("Player", "add_score")
+	get_tree().call_group("Level", "add_score")
 
 func disable_house():
 	visible = false
