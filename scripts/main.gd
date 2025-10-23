@@ -36,58 +36,58 @@ extends Node
 '''
 
 var delay: int = 0
+var tile_size: int = 64
+
 @onready var player = $Player
+@onready var level = $Level
 
 func _ready():
 	player.becomeHuman()
 
 func _process(delta):
 	
-	var move_x: int = 0
-	var move_y: int = 0
-	
-	var tile_set_data = $Level.tile_map_data
-	
 	if (delay > 0):
 		delay -= 1
 		return
 	
-	if (Input.is_key_pressed(KEY_E)):
-		var local_pos = $Level.to_local(player.global_position)
-		var map_pos = $Level.local_to_map(local_pos)
-		
-		print("\nPlayer: ", player.global_position, "\nLocal: ", local_pos, "\nMap: ", map_pos)
-		
-		delay = 15
-		
-	elif (Input.is_key_pressed(KEY_M)):
-		var local_pos = $Level.to_local(player.global_position)
-		var map_pos = $Level.local_to_map(local_pos)
-		var tile_data = $Level.get_cell_tile_data(map_pos)
-		
-		print(tile_set_data)
-		print("\nTile: ", tile_data)
-		
-		delay = 15
-		
-	elif (Input.is_key_pressed(KEY_X)):
-		player.becomeHuman()
-	elif (Input.is_key_pressed(KEY_Z)):
-		player.becomeCar()
-	elif (Input.is_action_pressed("ui_right")):
-		move_x = 64
-		delay = 15
-	elif (Input.is_action_pressed("ui_left")):
-		move_x = -64
-		delay = 15
+	var direction: String
+	
+	# Convert action press into string
+	if (Input.is_action_pressed("ui_right")):
+		direction = "right"
 	elif (Input.is_action_pressed("ui_up")):
-		move_y = -64
-		delay = 15
+		direction = "up"
+	elif (Input.is_action_pressed("ui_left")):
+		direction = "left"
 	elif (Input.is_action_pressed("ui_down")):
-		move_y = 64
-		delay = 15
-	else:
+		direction = "down"
+	
+	# Check move viability
+	var local_pos = level.to_local(player.global_position)
+	var map_pos = level.local_to_map(local_pos)
+	
+	var tile = level.get_cell_tile_data(map_pos)
+	var ruleset = tile.get_custom_data_by_layer_id(0)
+	
+	if direction not in ruleset:
 		return
+	
+	# Move player
+	var move_x: int = 0
+	var move_y: int = 0
+	
+	if (direction == "right"):
+		move_x = tile_size
+	elif (direction == "left"):
+		move_x = -tile_size
+	elif (direction == "up"):
+		move_y = -tile_size
+	elif (direction == "down"):
+		move_y = tile_size
 	
 	player.move_local_x(move_x)
 	player.move_local_y(move_y)
+	
+	delay = 15
+	
+	return
