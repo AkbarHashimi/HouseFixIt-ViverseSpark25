@@ -56,14 +56,17 @@ func _process(delta):
 		player.becomeCar()
 		
 	if (Input.is_action_pressed("ui_right")):
-		$Player.move_local_x(64)
-		delay = 20
+		move_x = 64
+		delay = 15
 	elif (Input.is_action_pressed("ui_left")):
-		player.move_local_x(-64)
-		delay = 20
+		move_x = -64
+		delay = 15
 	elif (Input.is_action_pressed("ui_up")):
-		player.move_local_y(-64)
-		delay = 20
+		move_y = -64
+		delay = 15
 	elif (Input.is_action_pressed("ui_down")):
-		player.move_local_y(64)
-		delay = 20
+		move_y = 64
+		delay = 15
+	
+	player.move_local_x(move_x)
+	player.move_local_y(move_y)
