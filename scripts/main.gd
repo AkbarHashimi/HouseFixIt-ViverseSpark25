@@ -3,50 +3,35 @@ extends Node
 # pseudo code
 
 '''
-e.g.
+// Level reads input
 
-struct Player {
-	int location[2]; // relative to game map?
-	bool isDriving;
-	// etc.
-}
+// Get viable moves from Path2D? of tile player stands on
+	// player.location?
+	// array of tiles?
+	// get info from tile node?
 
-struct Car {
-	int location[2];
-	int tank;
-	// etc.
-}
+// Level moves player object to new tile
+	// direction interpreted from input
+	// add displacemet to player.location
+	// player.x += move_x
+	// player.y += move_y
 
-Tile TileMap[size.y][size.x]; // to get information from tile we are on
+// Signal is emmitted from tile that was left
+	// house/gas/traffic/regular have different signals
+	// day counter/gas counter affected differently by player state
+	// Signal has info about tile that was left
+	
+// Level updates gas can & day counter
+	// gas can takes extra toll on traffic roads
+	// day get incremented more if player is driving through traffic
 
-func main() {
-	var input = getInput();
-	var current_tile = TileMap[this->player->location->x]
-								[this->player->location->y];
-								
-	var allowed_moves = current_tile->ruleset;
-	
-	// Tile has information about its ruleset
-	// pull this information to check for valid moves
-	// Stored as 4-bit flag? 0001 = 1 direction; 0011 = turn, 0101 is straight, etc.
-	
-	if (input == "interact") { // activating unique tiles? (houses & refills)
-		if (current_tile.type() == "gascan") {
-			fillMeter(current_tile);
-		} else if (current_tile.type() == "house") {
-			fixHouse(current_tile);
-		}
-	}
-	
-	else if (isValidMove(input, allowed_moves)) {
-		movePlayer(input);
-	} else {
-		return; // no valid move, do not increment time
-	}
-	
-	incrementTime(current_tile); // Tile has information about its time weight
-	// also increments when player refills or fixes?
-}
+// Car node only exists to track location if player is not in it
+	// Otheriwise hide/delete the object until player exits
+	// Gas can is handled by Level
+
+// Player node exists to manipulate sprites and keep track of location
+	// Movement/day counter is handled by Level
+
 
 '''
 	
