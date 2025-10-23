@@ -1,11 +1,10 @@
 extends Node
 
 var numHouses = 3
-var houseList
+var List
 func _ready():
-	houseList = get_tree().get_nodes_in_group("House")
+	List = get_tree().get_nodes_in_group("Fuel_Zone")
 	
-	houseList[0].enable_house()
-	houseList[1].enable_house()
-	houseList[2].enable_house()
+	List[0].enable_zone()
+	List[4].enable_zone()
 	
