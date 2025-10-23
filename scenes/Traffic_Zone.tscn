@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0scttd3gyld"]
+[gd_scene load_steps=4 format=3 uid="uid://d0scttd3gyld"]
 
 [ext_resource type="Texture2D" uid="uid://ur322mwf85gt" path="res://assets/TrafficCone.png" id="1_6tila"]
+[ext_resource type="Script" uid="uid://bwtaay0kkl38t" path="res://scripts/TrafficZone.gd" id="1_a5s3o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a5s3o"]
 radius = 30.0
 
 [node name="TrafficZone" type="Area2D"]
 scale = Vector2(0.75, 0.75)
+script = ExtResource("1_a5s3o")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

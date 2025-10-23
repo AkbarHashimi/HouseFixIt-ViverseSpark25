@@ -9,7 +9,7 @@ func _ready():
 	add_to_group("Traffic_Zone")
 	
 func add_movement_penalty():
-	get_tree().call_group("Player", "add_traffic_penalty", penaltyCost)
+	get_tree().call_group("Level", "add_traffic_penalty", penaltyCost)
 
 func disable_zone():
 	visible = false
