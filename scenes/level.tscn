@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr7d2wkxq0vq5"]
+[gd_scene load_steps=4 format=4 uid="uid://crljn0il1u3ty"]
 
 [ext_resource type="Texture2D" uid="uid://tltmx53hfouh" path="res://assets/roads2W.png" id="1_u52ul"]
 
@@ -8,31 +8,41 @@ texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -12.187229, 32, -11.75197, 32, -32, -32, -32)
+2:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-32, 11.5942, 32, 11.5942, 32, 32, -32, 32)
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.129684, 32, -13.129684, -13.3095455, -6.834633, -18.885166, 0.17985535, -20.144176, 4.676323, -19.6046, 12.769974, -14.02898, 12.949829, -2.3381615, 12.590103, 32, 32, 32, 32, -32, -32, -32, -32, 32)
 6:0/0 = 0
 7:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -13.129684, -11.690819, -14.388697, -12.410255, -32, -32, -32)
+2:1/0/physics_layer_0/polygon_1/points = PackedVector2Array(12.783348, -29.580072, 12.486061, 2.0810108, 4.6079483, 11.594202, -32, 12.78335, -32, 32, 32, 32, 32, -32, 12.783348, -32)
 3:1/0 = 0
 4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -11.099091, -32, -11.316711, -15.016407, -14.145889, -12.404858, -32, -11.969601)
+4:1/0/physics_layer_0/polygon_1/points = PackedVector2Array(11.056137, -32, 11.3018265, -15.110046, 14.25013, -12.530281, 32, -12.161745, 32, -32)
+4:1/0/physics_layer_0/polygon_2/points = PackedVector2Array(-32, 11.891487, 32, 12.188774, 32, 32, -32, 32)
 5:1/0 = 0
 6:1/0 = 0
 7:1/0 = 0
 0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -11.1512375, -32, -12.590111, -12.949827, -32, -12.410252)
+0:2/0/physics_layer_0/polygon_1/points = PackedVector2Array(11.510956, -32, 11.3311, -14.748415, 13.30954, -12.949827, 32, -12.41025, 32, -32)
+0:2/0/physics_layer_0/polygon_2/points = PackedVector2Array(-32, 11.793207, -15.847122, 11.916054, -11.301819, 14.864355, -11.178978, 32, -32, 32)
+0:2/0/physics_layer_0/polygon_3/points = PackedVector2Array(32, 11.445557, 16.350792, 11.296913, 11.445557, 15.161646, 10.702339, 32, 32, 32)
 1:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_5xgho"]
 tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 32
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_vonw3")
 
-[sub_resource type="Curve2D" id="Curve2D_2q6dc"]
-
 [node name="Level" type="TileMapLayer"]
-tile_map_data = PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 6, 0, 1, 0, 0, 0, 255, 255, 253, 255, 0, 0, 5, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 4, 0, 0, 0, 0, 0, 253, 255, 254, 255, 0, 0, 7, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAD+//7/AAACAAAAAAD///7/AAAGAAEAAAD///3/AAAFAAAAAAD/////AAAEAAAAAAD7//7/AAAHAAAAAAD8//7/AAACAAEAAAD8//3/AAACAAEAADD9//3/AAACAAEAAGD9//7/AAACAAEAAFA=")
 tile_set = SubResource("TileSet_5xgho")
-
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_2q6dc")
+collision_enabled = false
