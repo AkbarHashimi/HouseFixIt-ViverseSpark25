@@ -1,7 +1,7 @@
 extends Area2D
 
 func _ready():
-	self.area_shape_entered.connect(add_gas)
+	self.area_entered.connect(add_gas)
 	disable_zone()
 	
 	add_to_group("Fuel_Zone")
