@@ -1,7 +1,7 @@
 extends Area2D
 
 func _ready():
-	self.area_shape_entered.connect(add_score)
+	self.area_entered.connect(add_score)
 	disable_house()
 	
 	add_to_group("House")
