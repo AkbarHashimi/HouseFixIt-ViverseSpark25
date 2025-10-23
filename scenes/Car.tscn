@@ -7,6 +7,7 @@
 size = Vector2(60, 30)
 
 [node name="Car" type="Area2D"]
+collision_layer = 16
 script = ExtResource("1_ys5ts")
 metadata/_edit_group_ = true
 
