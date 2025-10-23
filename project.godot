@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="HouseFixIt"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [global_group]
@@ -37,6 +37,7 @@ test_key={
 2d_physics/layer_3="house"
 2d_physics/layer_4="traffic_zone"
 2d_physics/layer_5="car"
+2d_physics/layer_6="Wall"
 
 [rendering]
 

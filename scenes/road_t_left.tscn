@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://5vxpp3lowccv"]
+[gd_scene load_steps=8 format=3 uid="uid://5vxpp3lowccv"]
 
 [ext_resource type="Texture2D" uid="uid://tltmx53hfouh" path="res://assets/roads2W.png" id="1_tdjr4"]
+[ext_resource type="Script" uid="uid://bd1gbt1n41sii" path="res://scenes/road_t_left.gd" id="2_k2snk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k2snk"]
 texture = ExtResource("1_tdjr4")
@@ -298,35 +299,30 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_k2snk")
 
-[sub_resource type="Curve2D" id="Curve2D_tdjr4"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 32, 32, 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 31, 32)
-}
-point_count = 3
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2snk"]
+size = Vector2(20, 64)
 
-[sub_resource type="Curve2D" id="Curve2D_k2snk"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 31, 31, 0, 0, 0, 0, 32, 1, 0, 0, 0, 0, 31, 31)
-}
-point_count = 3
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivdw2"]
 
-[sub_resource type="Curve2D" id="Curve2D_ivdw2"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 31, 31, 0, 0, 0, 0, 33, 62, 0, 0, 0, 0, 31, 31)
-}
-point_count = 3
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sg3oi"]
+size = Vector2(21, 20)
 
 [node name="Road_T-Left" type="TileMapLayer"]
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 1, 0, 0, 0)
 tile_set = SubResource("TileSet_ivdw2")
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
+script = ExtResource("2_k2snk")
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_tdjr4")
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
 
-[node name="Path2D2" type="Path2D" parent="."]
-curve = SubResource("Curve2D_k2snk")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(54, 32)
+shape = SubResource("RectangleShape2D_k2snk")
 
-[node name="Path2D3" type="Path2D" parent="."]
-curve = SubResource("Curve2D_ivdw2")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_ivdw2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(10.5, 54)
+shape = SubResource("RectangleShape2D_sg3oi")
