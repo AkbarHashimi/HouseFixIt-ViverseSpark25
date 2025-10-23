@@ -44,7 +44,7 @@ func main() {
 		return; // no valid move, do not increment time
 	}
 	
-	incrementTime(current_tile); // Tile has information about its 
+	incrementTime(current_tile); // Tile has information about its time weight
 	// also increments when player refills or fixes?
 }
 
