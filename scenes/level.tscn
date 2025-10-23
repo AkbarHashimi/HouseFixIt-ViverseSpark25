@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://crljn0il1u3ty"]
+[gd_scene load_steps=4 format=3 uid="uid://dr7d2wkxq0vq5"]
 
 [ext_resource type="Texture2D" uid="uid://tltmx53hfouh" path="res://assets/roads2W.png" id="1_u52ul"]
 
@@ -46,6 +46,5 @@ custom_data_layer_0/type = 28
 sources/0 = SubResource("TileSetAtlasSource_vonw3")
 
 [node name="Level" type="TileMapLayer"]
-tile_map_data = PackedByteArray("AAD+//7/AAACAAAAAAD///7/AAAGAAEAAAD///3/AAAFAAAAAAD/////AAAEAAAAAAD7//7/AAAHAAAAAAD8//7/AAACAAEAAAD8//3/AAACAAEAADD9//3/AAACAAEAAGD9//7/AAACAAEAAFA=")
 tile_set = SubResource("TileSet_5xgho")
 collision_enabled = false
