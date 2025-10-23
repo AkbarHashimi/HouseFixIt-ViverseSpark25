@@ -8,7 +8,7 @@ func _ready():
 	
 func add_score():
 	disable_house()
-	#send notification to player that they can update the score
+	get_tree().call_group("Player", "add_score")
 
 func disable_house():
 	visible = false
