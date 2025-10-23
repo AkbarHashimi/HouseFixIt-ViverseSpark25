@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0scttd3gyld"]
+
+[ext_resource type="Texture2D" uid="uid://ur322mwf85gt" path="res://assets/TrafficCone.png" id="1_6tila"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5s3o"]
+radius = 30.0
+
+[node name="TrafficZone" type="Area2D"]
+scale = Vector2(0.75, 0.75)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6tila")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a5s3o")

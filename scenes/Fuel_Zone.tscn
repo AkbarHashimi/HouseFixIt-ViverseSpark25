@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cminnoimfcw4g"]
+
+[ext_resource type="Script" uid="uid://cadjuwtdl0w3l" path="res://scripts/FuelZone.gd" id="1_ivbq0"]
+[ext_resource type="Texture2D" uid="uid://mm4e5pjoaa5w" path="res://assets/gasCan.png" id="1_skqk2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skqk2"]
+size = Vector2(34, 34)
+
+[node name="FuelZone" type="Area2D"]
+script = ExtResource("1_ivbq0")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_skqk2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_skqk2")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0dj2hxqhurlf"
-path="res://.godot/imported/MapSpriteSheet.png-8ec20f47712f011e8c154c5d8cb6274b.ctex"
+uid="uid://mm4e5pjoaa5w"
+path="res://.godot/imported/gasCan.png-69ace4e83061d159f52e0121f1606aeb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/MapSpriteSheet.png"
-dest_files=["res://.godot/imported/MapSpriteSheet.png-8ec20f47712f011e8c154c5d8cb6274b.ctex"]
+source_file="res://assets/gasCan.png"
+dest_files=["res://.godot/imported/gasCan.png-69ace4e83061d159f52e0121f1606aeb.ctex"]
 
 [params]
 
