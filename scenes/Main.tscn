@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://chi1n4h0b5pjr"]
+[gd_scene load_steps=7 format=3 uid="uid://chi1n4h0b5pjr"]
 
 [ext_resource type="Script" uid="uid://8r2o4thtxdf5" path="res://scripts/main.gd" id="1_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://dr7d2wkxq0vq5" path="res://scenes/level.tscn" id="1_rvslj"]
 [ext_resource type="PackedScene" uid="uid://cdre0icif2jfu" path="res://scenes/Player.tscn" id="2_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://dg0s08q6nedvi" path="res://scenes/House.tscn" id="4_rarhs"]
 [ext_resource type="PackedScene" uid="uid://dk154a4qg0xax" path="res://scenes/HUD.tscn" id="5_vcsgt"]
+[ext_resource type="PackedScene" uid="uid://cminnoimfcw4g" path="res://scenes/Fuel_Zone.tscn" id="6_c01mt"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0bbpv")
@@ -53,3 +54,12 @@ position = Vector2(356, 292)
 
 [node name="House12" parent="." instance=ExtResource("4_rarhs")]
 position = Vector2(337, 49)
+
+[node name="FuelZone" parent="." instance=ExtResource("6_c01mt")]
+position = Vector2(351, 168)
+
+[node name="FuelZone2" parent="." instance=ExtResource("6_c01mt")]
+position = Vector2(28, 164)
+
+[node name="FuelZone3" parent="." instance=ExtResource("6_c01mt")]
+position = Vector2(222, 131)
