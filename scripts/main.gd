@@ -184,3 +184,7 @@ func resetFuelZones():
 func add_score():
 	score += 1
 	updateHud()
+	
+func add_gas():
+	gas = max_tank
+	updateHud()
