@@ -102,6 +102,7 @@ func _process(_delta):
 	delay = 15
 	
 	return
+
 func _input(_event):
 	# Convert action press into string
 	if (Input.is_action_pressed("ui_right")):
