@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc011qdgpxt7e"]
+
+[ext_resource type="Texture2D" uid="uid://ders527lfpumc" path="res://assets/House.png" id="1_fls4u"]
+[ext_resource type="Texture2D" uid="uid://mm4e5pjoaa5w" path="res://assets/gasCan.png" id="2_1etfg"]
+[ext_resource type="Texture2D" uid="uid://bsde81qpvv442" path="res://assets/sun_with_shades.svg" id="3_1etfg"]
+[ext_resource type="Texture2D" uid="uid://jyqi1bmj7p8e" path="res://assets/clock.png" id="4_7hsmw"]
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 808.0
+offset_top = 72.0
+offset_right = 882.0
+offset_bottom = 149.0
+scale = Vector2(2, 2)
+columns = 2
+
+[node name="Score" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="HouseControl" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="House" type="Sprite2D" parent="GridContainer/HouseControl"]
+position = Vector2(18, 13)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_fls4u")
+
+[node name="FuelCount" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "500"
+horizontal_alignment = 2
+
+[node name="GasControl" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Gas" type="Sprite2D" parent="GridContainer/GasControl"]
+position = Vector2(18, 12)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_1etfg")
+
+[node name="DaysLeft" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "1/7"
+horizontal_alignment = 2
+
+[node name="DayControl" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Sun" type="Sprite2D" parent="GridContainer/DayControl"]
+position = Vector2(22.5, 11)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_1etfg")
+
+[node name="Time" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "12:49 pm"
+horizontal_alignment = 2
+
+[node name="Control" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="clock" type="Sprite2D" parent="GridContainer/Control"]
+position = Vector2(20.499998, 10.999999)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_7hsmw")
