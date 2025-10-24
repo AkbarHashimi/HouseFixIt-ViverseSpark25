@@ -17,6 +17,7 @@ z_index = 1
 shape = SubResource("RectangleShape2D_v6fml")
 
 [node name="playerSprite" type="Sprite2D" parent="Human"]
+visible = false
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_p0vlq")
 
@@ -24,6 +25,8 @@ texture = ExtResource("1_p0vlq")
 zoom = Vector2(2, 2)
 
 [node name="Car" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
 
 [node name="CarSprite" type="Sprite2D" parent="Car"]
 scale = Vector2(0.75, 0.75)
