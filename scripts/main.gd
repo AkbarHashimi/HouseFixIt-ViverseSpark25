@@ -31,9 +31,8 @@ extends Node
 
 // Player node exists to manipulate sprites and keep track of location
 	// Movement/day counter is handled by Level
-
-
 '''
+
 var direction: String
 var move_x: int = 0
 var move_y: int = 0	
@@ -68,10 +67,11 @@ var tilePosition : Vector2i
 var level_region : Vector2i
 
 func _ready():
-	player.becomeHuman()
+	player.becomeCar()
 	timer = full_time # Arbitrary time
 	
 	# move player to starting location
+	
 	
 	# set randomize seed
 	randomize()
@@ -80,28 +80,7 @@ func _ready():
 	resetHouses()
 
 func _process(_delta):
-	
-	if (delay > 0):
-		delay -= 1
-		return
-	
-	var moved: bool = handleMovement()
-	
-	if not moved:
-		return
-	
-	handleGas()
-	handleTime()
-	
-	if (timer <= 0):
-		resetTimer()
-		resetHouses()
-
-		resetFuelZones()
-	
-	delay = 15
-	
-	return
+	pass
 
 func _input(_event):
 	# Convert action press into string
@@ -129,6 +108,18 @@ func _input(_event):
 				player.becomeCar()
 			else:
 				pass # go back to car message needed
+				
+	var moved: bool = handleMovement()
+	
+	if moved:	
+		handleGas()
+		handleTime()
+		
+		if (timer <= 0):
+			resetTimer()
+			resetHouses()
+			resetFuelZones()
+	#delay = 15
 	
 func handleMovement():		
 	# Check move viability
