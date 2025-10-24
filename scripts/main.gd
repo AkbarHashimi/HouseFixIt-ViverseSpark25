@@ -44,6 +44,10 @@ func _ready():
 	
 	# move player to starting location
 	
+	init_hud()
+	
+	#$Camera2D.position.x = desired_local_posX
+	#$Camera2D.position.y = desired_local_posY
 	
 	# set randomize seed
 	randomize()
@@ -57,6 +61,9 @@ func _input(event):
 	move_x = 0
 	move_y = 0
 	direction = ""
+	
+	if (Input.is_action_just_pressed("quit")):
+		get_tree().quit()
 	
 	if (Input.is_action_just_pressed("ui_right")):
 		direction = "right"
@@ -165,11 +172,11 @@ func updateHud():
 	hud.change_score(score)
 
 func reset():
-	resetPlayer()	
+	resetPlayer()
+	resetTrafficZones()
 	resetTimer()
 	resetHouses()
 	resetFuelZones()
-	resetTrafficZones()
 	day_score = 0
 	gas = max_tank
 	updateHud()
@@ -272,3 +279,18 @@ func resetTrafficZones():
 			if (j >= traffic_zones.size()):
 				j = 0
 		traffic_zones[j].enable_zone()
+		
+func init_hud():
+	var coord_0_0 = level.map_to_local(Vector2i(0,0))
+	var coord_5_0 = level.map_to_local(Vector2i(5,0))
+	var coord_0_4 = level.map_to_local(Vector2i(0,4))
+	
+	var desired_local_posX = (coord_5_0 - coord_0_0) / 2.0
+	
+	
+	var desired_local_posY = (coord_0_4 - coord_0_0) / 2.0
+	
+	
+	var finalVector: Vector2 = desired_local_posX + desired_local_posY
+	
+	$Camera2D.position = finalVector

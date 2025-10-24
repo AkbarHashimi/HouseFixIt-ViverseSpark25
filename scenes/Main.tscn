@@ -11,14 +11,12 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_0bbpv")
 
-[node name="Player" parent="." instance=ExtResource("2_0bbpv")]
-position = Vector2(32, 32)
-collision_mask = 0
+[node name="Hud" parent="." instance=ExtResource("5_vcsgt")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="Level" parent="." instance=ExtResource("1_rvslj")]
-
-[node name="Hud" parent="." instance=ExtResource("5_vcsgt")]
-follow_viewport_enabled = false
 
 [node name="House" parent="." instance=ExtResource("4_rarhs")]
 position = Vector2(16, 226)
@@ -82,3 +80,5 @@ position = Vector2(159, 32)
 
 [node name="TrafficZone6" parent="." instance=ExtResource("7_nxtc6")]
 position = Vector2(224, 230)
+
+[node name="Player" parent="." instance=ExtResource("2_0bbpv")]
