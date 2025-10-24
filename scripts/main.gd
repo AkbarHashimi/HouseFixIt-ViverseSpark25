@@ -163,8 +163,7 @@ func updateHud():
 	hud.change_score(score)
 
 func reset():
-	# reset player position
-	
+	resetPlayer()	
 	resetTimer()
 	resetHouses()
 	resetFuelZones()
@@ -213,6 +212,15 @@ func resetFuelZones():
 			if (j >= fuel_zones.size()):
 				j = 0
 		fuel_zones[j].enable_zone()
+
+func resetPlayer():
+	if(carPosition != humanPosition):
+		humanPosition = carPosition
+	car.scale.x = 1
+	car.rotation_degrees = 0
+	human.scale.x = 1
+	car.rotation_degrees = 0
+	player.set_position(level.to_global(level.map_to_local(Vector2i(5,4)))) 
 
 func add_score():
 	score += 1
