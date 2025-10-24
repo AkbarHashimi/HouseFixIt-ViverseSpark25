@@ -4,10 +4,11 @@ var direction: String
 var move_x: int = 0
 var move_y: int = 0
 
-const full_time: int = 100
+const full_time: int = 80
 var timer: int = 0
 var day: int = 1
 var score: int = 0
+var day_score: int = 0
 
 const car_time: int = 1
 const walk_time: int = 4
@@ -36,6 +37,8 @@ var level_region : Vector2i
 func _ready():
 	player.becomeCar()
 	timer = full_time # Arbitrary time
+	
+	add_to_group("Level")
 	
 	# move player to starting location
 	
@@ -84,9 +87,7 @@ func _input(event):
 		handleTime()
 		
 		if (timer <= 0):
-			resetTimer()
-			resetHouses()
-			resetFuelZones()
+			reset()
 			
 		updateHud()
 	
@@ -151,6 +152,14 @@ func updateHud():
 	hud.change_time(timer)
 	hud.change_score(score)
 
+func reset():
+	# reset player position
+	
+	resetTimer()
+	resetHouses()
+	resetFuelZones()
+	day_score = 0
+
 func resetTimer():
 	timer = full_time
 	day += 1
@@ -195,7 +204,10 @@ func resetFuelZones():
 
 func add_score():
 	score += 1
+	day_score += 1
 	hud.change_score(score)
+	if (day_score == num_houses):
+		reset()
 
 func add_traffic_penalty(penalty_cost):
 	timer -= penalty_cost
