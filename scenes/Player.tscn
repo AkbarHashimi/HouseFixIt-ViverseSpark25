@@ -17,7 +17,6 @@ z_index = 1
 shape = SubResource("RectangleShape2D_v6fml")
 
 [node name="playerSprite" type="Sprite2D" parent="Human"]
-visible = false
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_p0vlq")
 
