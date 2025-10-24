@@ -7,6 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6fml"]
 
 [node name="Player" type="Area2D"]
+collision_mask = 14
 script = ExtResource("1_3li8b")
 
 [node name="Human" type="Area2D" parent="."]

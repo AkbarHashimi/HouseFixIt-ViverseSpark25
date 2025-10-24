@@ -2,13 +2,15 @@ extends Area2D
 
 var is_disabled: bool
 
+
+
 func _ready():
 	self.area_entered.connect(add_score)
 	disable_house()
 	
 	add_to_group("House")
 	
-func add_score():
+func add_score(_area: Area2D):
 	disable_house()
 	get_tree().call_group("Level", "add_score")
 
