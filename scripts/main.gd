@@ -46,8 +46,6 @@ func _ready():
 	resetHouses()
 
 func _input(event):
-	move_x = 0
-	move_y = 0
 	
 	if (Input.is_action_just_pressed("ui_right")):
 		direction = "right"
@@ -62,7 +60,7 @@ func _input(event):
 		direction = "down"
 		move_y =tile_size
 	#Getting into or out of car
-	if (Input.is_action_just_pressed("enter-exit")):
+	elif (Input.is_action_just_pressed("enter-exit")):
 		if (player.playerState == "car"): 
 			carPosition = level.to_local(car.global_position)
 			player.becomeHuman()
@@ -72,6 +70,10 @@ func _input(event):
 				player.becomeCar()
 			else:
 				pass # go back to car message needed
+	else:
+		move_x = 0
+		move_y = 0
+		direction = ""
 	
 	moved = handleMovement()
 	
