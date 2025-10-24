@@ -34,6 +34,9 @@ extends Node
 
 
 '''
+var direction: String
+var move_x: int = 0
+var move_y: int = 0	
 
 var delay: int = 0
 
@@ -51,12 +54,12 @@ const tile_size: int = 64
 @onready var level = $Level
 @onready var houses = get_tree().get_nodes_in_group("House")
 
-var num_houses: int = 10 # increases each day
+var num_houses: int = 2 # increases each day
 var max_tank: int = 50 # decreases on some days?
 var gas: int = max_tank
 
-var carPosition : Vector2i
-var humanPosition : Vector2i
+var carPosition : Vector2
+var humanPosition : Vector2
 var tilePosition : Vector2i
 var level_region : Vector2i
 
@@ -70,7 +73,7 @@ func _ready():
 	randomize()
 	
 	# setup houses
-	resetHouses(num_houses)
+	resetHouses()
 
 func _process(_delta):
 	
@@ -88,20 +91,12 @@ func _process(_delta):
 	
 	if (timer <= 0):
 		resetTimer()
-		resetHouses(num_houses)
+		resetHouses()
 	
 	delay = 15
 	
 	return
-
-func handleMovement():
-	var direction: String
-	var move_x: int = 0
-	var move_y: int = 0	
-	
-	if (player.isDriving() and gas == 0):
-		return false # Player cannot drive with empty gas can
-	
+func _input(_event):
 	# Convert action press into string
 	if (Input.is_action_pressed("ui_right")):
 		direction = "right"
@@ -119,13 +114,21 @@ func handleMovement():
 	#Getting out into or out of car	
 	if (Input.is_key_pressed(KEY_X)):
 		if (player.playerState == "car"): 
+			carPosition = level.to_local(car.global_position)
 			player.becomeHuman()
 		elif (player.playerState == "human"):
-			player.becomeCar()
+			humanPosition = level.to_local(human.global_position)
+			if(carPosition == humanPosition):
+				player.becomeCar()
+			else:
+				pass # go back to car message needed
 	
+func handleMovement():		
 	# Check move viability
 	if (player.playerState == "car"):
-		var local_pos = level.to_local(player.global_position)
+		if(gas <= 0):
+			return false # Player cannot drive with empty gas can	
+		var local_pos = level.to_local(car.global_position)
 		var map_pos = level.local_to_map(local_pos)
 		
 		var tile = level.get_cell_tile_data(map_pos)
@@ -141,7 +144,7 @@ func handleMovement():
 		var ruleset = tile.get_custom_data_by_layer_id(0)
 
 		if direction not in ruleset:
-			return true	
+			return false	
 	
 	#Move player or human		
 	if(player.playerState == "car"):
@@ -150,13 +153,14 @@ func handleMovement():
 	elif(player.playerState == "human"):
 		human.move_local_x(move_x)
 		human.move_local_y(move_y)
+	return true
 
 func handleGas():
-	if (player.isDriving()):
+	if (player.playerState == "car"):
 		gas -= 1
 
 func handleTime():
-	if (player.isDriving()):
+	if (player.playerState == "car"):
 		timer -= car_time
 	else:
 		timer -= walk_time
@@ -169,14 +173,14 @@ func resetTimer():
 	day += 1
 	num_houses += 2 # difficulty increases
 
-func resetHouses(num_houses):
+func resetHouses():
 	get_tree().call_group("House", "disable_house")
 	
 	for i in range(0, num_houses):
 		# get random number
 		# modulo with number of houses
 		var j = randi() % houses.size()
-		while (not houses[j].isDisabled()):
+		while (houses[j].is_disabled == false):
 			j += 1
 			if (j >= houses.size()):
 				j = 0
