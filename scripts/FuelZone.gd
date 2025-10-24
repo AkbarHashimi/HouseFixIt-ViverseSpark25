@@ -6,7 +6,7 @@ func _ready():
 	
 	add_to_group("Fuel_Zone")
 	
-func add_gas():
+func add_gas(_area: Area2D):
 	disable_zone()
 	get_tree().call_group("Level", "add_gas")
 
