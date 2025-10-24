@@ -20,7 +20,7 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_p0vlq")
 
 [node name="Camera2D" type="Camera2D" parent="Human"]
-zoom = Vector2(6, 6)
+zoom = Vector2(4, 4)
 
 [node name="Car" type="Area2D" parent="."]
 
