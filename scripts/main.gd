@@ -79,21 +79,25 @@ func _ready():
 	# setup houses
 	resetHouses()
 
-func _process(_delta):
-	pass
-
-func _input(_event):
+func _process(delta):
 	# Convert action press into string
-	if (Input.is_action_pressed("ui_right")):
+	#if (delay > 0):
+	#	delay -= 1
+	#	return
+		
+	move_x = 0
+	move_y = 0
+	
+	if (Input.is_action_just_pressed("ui_right")):
 		direction = "right"
 		move_x = tile_size
-	elif (Input.is_action_pressed("ui_up")):
+	elif (Input.is_action_just_pressed("ui_up")):
 		direction = "up"
 		move_y = -tile_size
-	elif (Input.is_action_pressed("ui_left")):
+	elif (Input.is_action_just_pressed("ui_left")):
 		direction = "left"
 		move_x = -tile_size
-	elif (Input.is_action_pressed("ui_down")):
+	elif (Input.is_action_just_pressed("ui_down")):
 		direction = "down"
 		move_y =tile_size
 		
@@ -112,8 +116,9 @@ func _input(_event):
 	var moved: bool = handleMovement()
 	
 	if moved:	
-		handleGas()
-		handleTime()
+		#delay = 15
+		#handleGas()
+		#handleTime()
 		
 		if (timer <= 0):
 			resetTimer()
@@ -146,11 +151,9 @@ func handleMovement():
 	
 	#Move player or human		
 	if(player.playerState == "car"):
-		player.move_local_x(move_x)
-		player.move_local_y(move_y)	
+		player.global_translate(Vector2(move_x, move_y))
 	elif(player.playerState == "human"):
-		human.move_local_x(move_x)
-		human.move_local_y(move_y)
+		human.global_translate(Vector2(move_x, move_y))
 	return true
 
 func handleGas():
