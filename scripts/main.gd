@@ -6,7 +6,8 @@ var move_y: int = 0
 
 const full_time: int = 100
 var timer: int = 0
-var day: int = 0
+var day: int = 1
+var score: int = 0
 
 const car_time: int = 1
 const walk_time: int = 4
@@ -44,6 +45,7 @@ func _ready():
 	
 	# setup houses
 	resetHouses()
+	updateHud()
 
 func _input(event):
 	
@@ -132,6 +134,7 @@ func updateHud():
 	hud.change_days(day)
 	hud.change_fuel(gas)
 	hud.change_time(timer)
+	hud.change_score(score)
 
 func add_traffic_penalty(penalty_cost):
 	timer -= penalty_cost
@@ -177,3 +180,6 @@ func resetFuelZones():
 		var j = randi() % fuel_zones.size()
 		while (not fuel_zones[j].isDisabled):
 	'''
+
+func add_score():
+	score += 1
