@@ -7,7 +7,7 @@
 radius = 30.0
 
 [node name="TrafficZone" type="Area2D"]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_a5s3o")
 metadata/_edit_group_ = true
 

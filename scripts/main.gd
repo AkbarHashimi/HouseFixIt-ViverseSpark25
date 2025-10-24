@@ -6,7 +6,7 @@ var move_y: int = 0
 
 const full_time: int = 80
 var timer: int = 0
-var day: int = 1
+var day: int = 0
 var score: int = 0
 var day_score: int = 0
 
@@ -21,10 +21,12 @@ const tile_size: int = 64
 @onready var hud = $Hud
 @onready var houses = get_tree().get_nodes_in_group("House")
 @onready var fuel_zones = get_tree().get_nodes_in_group("Fuel_Zone")
+@onready var traffic_zones = get_tree().get_nodes_in_group("Traffic_Zone")
 
 var moved: bool
 var num_houses: int = 2 # increases each day
 var num_fuel_zones: int = 2 # decreases some days?
+var num_traffic_zones: int = 1
 
 var max_tank: int = 50 # decreases on some days?
 var gas: int = max_tank
@@ -48,7 +50,7 @@ func _ready():
 	
 	# setup houses
 	reset()
-	updateHud()
+	
 
 func _input(event):
 	
@@ -167,7 +169,9 @@ func reset():
 	resetTimer()
 	resetHouses()
 	resetFuelZones()
+	resetTrafficZones()
 	day_score = 0
+	updateHud()
 
 func resetTimer():
 	timer = full_time
@@ -230,9 +234,35 @@ func add_score():
 		reset()
 
 func add_traffic_penalty(penalty_cost):
-	timer -= penalty_cost
-	hud.change_time(timer)
+	if player.playerState == "car":
+		timer -= penalty_cost
+		gas -= penalty_cost
+		
+		if timer <= 0:
+			reset()
+		else:
+			updateHud()
+		
 	
 func add_gas():
 	gas = max_tank
 	updateHud()
+
+func resetTrafficZones():
+	get_tree().call_group("Traffic_Zone", "disable_zone")
+	
+	if (day % 2 == 0):
+		num_traffic_zones += 2 # difficulty increases
+	# temporary check to prevent crashing
+	if (num_traffic_zones > traffic_zones.size()):
+		num_traffic_zones = traffic_zones.size()
+	
+	for i in range(0, num_traffic_zones):
+		# get random number
+		# modulo with number of traffic zones
+		var j = randi() % traffic_zones.size()
+		while (traffic_zones[j].is_disabled == false):
+			j += 1
+			if (j >= traffic_zones.size()):
+				j = 0
+		traffic_zones[j].enable_zone()
