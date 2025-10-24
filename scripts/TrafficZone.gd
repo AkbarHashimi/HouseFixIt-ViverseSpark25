@@ -8,7 +8,7 @@ func _ready():
 	
 	add_to_group("Traffic_Zone")
 	
-func add_movement_penalty():
+func add_movement_penalty(_area: Area2D):
 	get_tree().call_group("Level", "add_traffic_penalty", penaltyCost)
 
 func disable_zone():
