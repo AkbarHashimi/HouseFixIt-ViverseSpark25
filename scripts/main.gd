@@ -39,11 +39,21 @@ var delay: int = 0
 var tile_size: int = 64
 
 @onready var player = $Player
+<<<<<<< Updated upstream
 @onready var level = $Level
+=======
+@onready var human = $Player/Human
+@onready var car = $Player/Car
+@onready var tile_map = $Level
+var astar_grid : AStarGrid2D
+var carPosition : Vector2i
+var humanPosition : Vector2i
+var tilePosition : Vector2i
+var level_region : Vector2i
+>>>>>>> Stashed changes
 
-func _ready():
-	player.becomeHuman()
 
+<<<<<<< Updated upstream
 func _process(delta):
 	
 	if (delay > 0):
@@ -91,3 +101,39 @@ func _process(delta):
 	delay = 15
 	
 	return
+=======
+
+func _ready():	
+	player.becomeCar()
+
+func _process(_delta):
+	pass
+
+func _input(_event):
+	var move_x: int = 0
+	var move_y: int = 0	
+	
+	if (Input.is_key_pressed(KEY_X)):
+		if (player.playerState == "car"): 
+			player.becomeHuman()
+			print("Player is: ", player.playerState)
+		elif (player.playerState == "human"):
+			player.becomeCar()
+			print("Player is: ", player.playerState)
+		
+	if (Input.is_action_pressed("ui_right")):
+		move_x = 64
+	elif (Input.is_action_pressed("ui_left")):
+		move_x = -64
+	elif (Input.is_action_pressed("ui_up")):
+		move_y = -64
+	elif (Input.is_action_pressed("ui_down")):
+		move_y = 64
+	if(player.playerState == "car"):
+		player.move_local_x(move_x)
+		player.move_local_y(move_y)	
+	elif(player.playerState == "human"):
+		human.move_local_x(move_x)
+		human.move_local_y(move_y)
+	
+>>>>>>> Stashed changes

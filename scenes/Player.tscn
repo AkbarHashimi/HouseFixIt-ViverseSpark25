@@ -9,16 +9,21 @@
 [node name="Player" type="Area2D"]
 script = ExtResource("1_3li8b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Human" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Human"]
 shape = SubResource("RectangleShape2D_v6fml")
 
-[node name="playerSprite" type="Sprite2D" parent="."]
+[node name="playerSprite" type="Sprite2D" parent="Human"]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_p0vlq")
 
-[node name="CarSprite" type="Sprite2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Human"]
+zoom = Vector2(6, 6)
+
+[node name="Car" type="Area2D" parent="."]
+
+[node name="CarSprite" type="Sprite2D" parent="Car"]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_v6fml")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(6, 6)
