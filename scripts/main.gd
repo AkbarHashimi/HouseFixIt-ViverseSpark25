@@ -48,8 +48,10 @@ const tile_size: int = 64
 @onready var player = $Player
 @onready var level = $Level
 @onready var houses = get_tree().get_nodes_in_group("House")
+@onready var fuel_zones = get_tree().get_nodes_in_group("Fuel_Zone")
 
 var num_houses: int = 10 # increases each day
+var num_fuel_zones: int = 4 # decreases some days?
 var max_tank: int = 50 # decreases on some days?
 var gas: int = max_tank
 
@@ -81,7 +83,8 @@ func _process(delta):
 	
 	if (timer <= 0):
 		resetTimer()
-		resetHouses(num_houses)
+		resetHouses()
+		resetFuelZones()
 	
 	delay = 15
 	
@@ -151,7 +154,7 @@ func resetTimer():
 	day += 1
 	num_houses += 2 # difficulty increases
 
-func resetHouses(num_houses):
+func resetHouses():
 	get_tree().call_group("House", "disable_house")
 	
 	for i in range(0, num_houses):
@@ -165,3 +168,10 @@ func resetHouses(num_houses):
 		houses[j].enable_house()
 	
 	# Entering new day
+
+func resetFuelZones():
+	get_tree().call_group("Fuel_Zone", "disable_zone")
+	
+	for i in range(0, num_fuel_zones):
+		var j = randi() % fuel_zones.size()
+		while (not fuel_zones[j].isDisabled
