@@ -158,9 +158,9 @@ func resetHouses(num_houses):
 		# get random number
 		# modulo with number of houses
 		var j = randi() % houses.size()
-		while (houses[j].disabled == false):
+		while (not houses[j].isDisabled()):
 			j += 1
-			if (j > houses.size()):
+			if (j >= houses.size()):
 				j = 0
 		houses[j].enable_house()
 	
