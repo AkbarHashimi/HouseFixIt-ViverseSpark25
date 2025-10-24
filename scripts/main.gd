@@ -171,6 +171,7 @@ func reset():
 	resetFuelZones()
 	resetTrafficZones()
 	day_score = 0
+	gas = max_tank
 	updateHud()
 
 func resetTimer():
@@ -230,10 +231,6 @@ func resetPlayer():
 	human.rotation_degrees = 0
 	
 
-	print("Player Position: ", player.position)
-	print("Human Position: ", human.position)
-	print("Car Position: ", car.position)
-
 func add_score():
 	score += 1
 	day_score += 1
@@ -249,7 +246,7 @@ func add_traffic_penalty(penalty_cost):
 		if timer <= 0:
 			reset()
 		if gas <= 0:
-			reset()
+			gas = 0
 		updateHud()
 		
 	
