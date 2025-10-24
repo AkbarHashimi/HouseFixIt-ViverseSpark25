@@ -2,9 +2,7 @@ extends Node
 
 var direction: String
 var move_x: int = 0
-var move_y: int = 0	
-
-var delay: int = 0
+var move_y: int = 0
 
 const full_time: int = 100
 var timer: int = 0
@@ -18,6 +16,7 @@ const tile_size: int = 64
 @onready var human = $Player/Human
 @onready var car = $Player/Car
 @onready var level = $Level
+@onready var hud = $Hud
 @onready var houses = get_tree().get_nodes_in_group("House")
 @onready var fuel_zones = get_tree().get_nodes_in_group("Fuel_Zone")
 
@@ -47,7 +46,6 @@ func _ready():
 	resetHouses()
 
 func _process(delta):
-	# Convert action press into string
 	#if (delay > 0):
 	#	delay -= 1
 	#	return
@@ -67,9 +65,8 @@ func _process(delta):
 	elif (Input.is_action_just_pressed("ui_down")):
 		direction = "down"
 		move_y =tile_size
-		
-	#Getting out into or out of car	
-	if (Input.is_key_pressed(KEY_X)):
+	#Getting into or out of car
+	if (Input.is_action_just_pressed("enter-exit")):
 		if (player.playerState == "car"): 
 			carPosition = level.to_local(car.global_position)
 			player.becomeHuman()
@@ -79,19 +76,19 @@ func _process(delta):
 				player.becomeCar()
 			else:
 				pass # go back to car message needed
-				
+	
 	var moved: bool = handleMovement()
 	
 	if moved:	
-		#delay = 15
-		#handleGas()
-		#handleTime()
+		handleGas()
+		handleTime()
 		
 		if (timer <= 0):
 			resetTimer()
 			resetHouses()
 			resetFuelZones()
-	#delay = 15
+			
+		updateHud()
 	
 func handleMovement():		
 	# Check move viability
@@ -133,16 +130,27 @@ func handleTime():
 	else:
 		timer -= walk_time
 
+func updateHud():
+	hud.change_days(day)
+	hud.change_fuel(gas)
+	hud.change_time(timer)
+
 func add_traffic_penalty(penalty_cost):
 	timer -= penalty_cost
 
 func resetTimer():
 	timer = full_time
 	day += 1
-	num_houses += 2 # difficulty increases
 
 func resetHouses():
 	get_tree().call_group("House", "disable_house")
+	
+	if (day % 2 == 0):
+		num_houses += 1 # difficulty increases
+	
+	# temporary check to prevent crashing
+	if (num_houses > houses.size()):
+		return
 	
 	for i in range(0, num_houses):
 		# get random number
@@ -158,6 +166,13 @@ func resetHouses():
 
 func resetFuelZones():
 	get_tree().call_group("Fuel_Zone", "disable_zone")
+	
+	if (day % 3 == 0):
+		num_fuel_zones -= 1
+	
+	# temporary check to prevent crashing
+	if (num_fuel_zones > fuel_zones.size()):
+		return
 	
 	'''
 	for i in range(0, num_fuel_zones):

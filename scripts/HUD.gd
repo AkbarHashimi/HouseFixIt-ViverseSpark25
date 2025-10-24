@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-
 func change_score(value: int):
 	$GridContainer/Score.text = str(value)
 	
