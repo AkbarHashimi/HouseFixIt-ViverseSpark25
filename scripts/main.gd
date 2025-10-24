@@ -50,7 +50,7 @@ func _ready():
 	
 	# setup houses
 	reset()
-	updateHud()
+	
 
 func _input(event):
 	
@@ -172,6 +172,7 @@ func reset():
 	resetFuelZones()
 	resetTrafficZones()
 	day_score = 0
+	updateHud()
 
 func resetTimer():
 	timer = full_time
@@ -227,11 +228,12 @@ func add_score():
 func add_traffic_penalty(penalty_cost):
 	if player.playerState == "car":
 		timer -= penalty_cost
+		gas -= penalty_cost
 		
 		if timer <= 0:
 			reset()
 		else:
-			hud.change_time(timer)
+			updateHud()
 		
 	
 func add_gas():
