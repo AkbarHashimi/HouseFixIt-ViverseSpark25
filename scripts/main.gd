@@ -212,3 +212,7 @@ func add_score():
 func add_traffic_penalty(penalty_cost):
 	timer -= penalty_cost
 	hud.change_time(timer)
+	
+func add_gas():
+	gas = max_tank
+	updateHud()
