@@ -56,10 +56,10 @@ position = Vector2(356, 292)
 position = Vector2(337, 49)
 
 [node name="FuelZone" parent="." instance=ExtResource("6_c01mt")]
-position = Vector2(351, 168)
+position = Vector2(350, 98)
 
 [node name="FuelZone2" parent="." instance=ExtResource("6_c01mt")]
 position = Vector2(28, 164)
 
 [node name="FuelZone3" parent="." instance=ExtResource("6_c01mt")]
-position = Vector2(222, 131)
+position = Vector2(224, 99)
