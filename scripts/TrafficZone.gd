@@ -2,6 +2,8 @@ extends Area2D
 
 var penaltyCost: int = 10
 
+var is_disabled: bool = false
+
 func _ready():
 	self.area_exited.connect(add_movement_penalty)
 	disable_zone()
@@ -14,10 +16,12 @@ func add_movement_penalty(_area: Area2D):
 func disable_zone():
 	visible = false
 	$CollisionShape2D.set_deferred("disabled",true)
+	is_disabled = true
 
 func enable_zone():
 	visible = true
 	$CollisionShape2D.set_deferred("disabled",false)
+	is_disabled = false
 	
 func change_penalty_cost(newCost: int):
 	penaltyCost = newCost

@@ -1,5 +1,7 @@
 extends Area2D
 
+var is_disabled: bool = false
+
 func _ready():
 	self.area_entered.connect(add_gas)
 	disable_zone()
@@ -13,7 +15,9 @@ func add_gas(_area: Area2D):
 func disable_zone():
 	visible = false
 	$CollisionShape2D.set_deferred("disabled",true)
+	is_disabled = true
 
 func enable_zone():
 	visible = true
 	$CollisionShape2D.set_deferred("disabled",false)
+	is_disabled = false

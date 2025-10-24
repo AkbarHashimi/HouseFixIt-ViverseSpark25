@@ -24,8 +24,7 @@ const tile_size: int = 64
 
 var moved: bool
 var num_houses: int = 2 # increases each day
-var num_fuel_zones: int = 4 # decreases some days?
-var max_house: int = 12
+var num_fuel_zones: int = 2 # decreases some days?
 
 var max_tank: int = 50 # decreases on some days?
 var gas: int = max_tank
@@ -48,7 +47,7 @@ func _ready():
 	randomize()
 	
 	# setup houses
-	resetHouses()
+	reset()
 	updateHud()
 
 func _input(event):
@@ -194,13 +193,16 @@ func resetFuelZones():
 	
 	# temporary check to prevent crashing
 	if (num_fuel_zones > fuel_zones.size()):
-		return
+		num_fuel_zones = fuel_zones.size()
 	
-	'''
+	
 	for i in range(0, num_fuel_zones):
 		var j = randi() % fuel_zones.size()
-		while (not fuel_zones[j].isDisabled):
-	'''
+		while (fuel_zones[j].is_disabled == false):
+			j += 1
+			if (j >= fuel_zones.size()):
+				j = 0
+		fuel_zones[j].enable_zone()
 
 func add_score():
 	score += 1
