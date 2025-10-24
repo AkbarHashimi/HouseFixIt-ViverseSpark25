@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc011qdgpxt7e"]
+[gd_scene load_steps=6 format=3 uid="uid://cc011qdgpxt7e"]
 
 [ext_resource type="Texture2D" uid="uid://ders527lfpumc" path="res://assets/House.png" id="1_fls4u"]
+[ext_resource type="Script" uid="uid://c5d6ur0npm450" path="res://scripts/HUD.gd" id="1_nysna"]
 [ext_resource type="Texture2D" uid="uid://mm4e5pjoaa5w" path="res://assets/gasCan.png" id="2_1etfg"]
 [ext_resource type="Texture2D" uid="uid://bsde81qpvv442" path="res://assets/sun_with_shades.svg" id="3_1etfg"]
 [ext_resource type="Texture2D" uid="uid://jyqi1bmj7p8e" path="res://assets/clock.png" id="4_7hsmw"]
 
 [node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_nysna")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 offset_left = 808.0
@@ -41,7 +43,7 @@ position = Vector2(18, 12)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_1etfg")
 
-[node name="DaysLeft" type="Label" parent="GridContainer"]
+[node name="Days" type="Label" parent="GridContainer"]
 layout_mode = 2
 text = "1/7"
 horizontal_alignment = 2

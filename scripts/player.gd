@@ -1,20 +1,22 @@
 extends Area2D
 
 # custom methods
+var playerState = "car"
 
-var b_isDriving: bool = false
+
+#var b_isDriving: bool = false
 
 func becomeHuman():
-	$playerSprite.visible = true
-	$CarSprite.visible = false
-	
-	b_isDriving = false
+	$Human/playerSprite.visible = true
+	$Car/CarSprite.visible = true
+	playerState = "human"
+	#b_isDriving = false
 
 func becomeCar():
-	$playerSprite.visible = false
-	$CarSprite.visible = true
-	
-	b_isDriving = true
+	$Human/playerSprite.visible = false
+	$Car/CarSprite.visible = true
+	playerState = "car"
+	#b_isDriving = true
 
-func isDriving():
-	return b_isDriving
+#func isDriving():
+#	return b_isDriving

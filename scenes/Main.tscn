@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://chi1n4h0b5pjr"]
+[gd_scene load_steps=5 format=3 uid="uid://chi1n4h0b5pjr"]
 
 [ext_resource type="Script" uid="uid://8r2o4thtxdf5" path="res://scripts/main.gd" id="1_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://dr7d2wkxq0vq5" path="res://scenes/level.tscn" id="1_rvslj"]
 [ext_resource type="PackedScene" uid="uid://cdre0icif2jfu" path="res://scenes/Player.tscn" id="2_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://dg0s08q6nedvi" path="res://scenes/House.tscn" id="4_rarhs"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0bbpv")
 
-[node name="Level" parent="." instance=ExtResource("1_rvslj")]
-tile_map_data = PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 6, 0, 1, 0, 0, 0, 255, 255, 253, 255, 0, 0, 5, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 4, 0, 0, 0, 0, 0, 253, 255, 254, 255, 0, 0, 7, 0, 0, 0, 0, 0)
-collision_enabled = true
-
 [node name="Player" parent="." instance=ExtResource("2_0bbpv")]
-position = Vector2(49, 33)
+position = Vector2(32, 32)
+
+[node name="Level" parent="." instance=ExtResource("1_rvslj")]
+
+[node name="House" parent="." instance=ExtResource("4_rarhs")]
+
+[node name="House2" parent="." instance=ExtResource("4_rarhs")]
+
+[node name="House3" parent="." instance=ExtResource("4_rarhs")]
