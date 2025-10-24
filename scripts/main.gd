@@ -49,6 +49,10 @@ func _ready():
 
 func _input(event):
 	
+	move_x = 0
+	move_y = 0
+	direction = ""
+	
 	if (Input.is_action_just_pressed("ui_right")):
 		direction = "right"
 		move_x = tile_size
@@ -72,10 +76,6 @@ func _input(event):
 				player.becomeCar()
 			else:
 				pass # go back to car message needed
-	else:
-		move_x = 0
-		move_y = 0
-		direction = ""
 	
 	moved = handleMovement()
 	
