@@ -80,7 +80,8 @@ func _input(event):
 			if(carPosition == humanPosition):
 				player.becomeCar()
 			else:
-				pass # go back to car message needed
+				$Player/Human/Label.visible = true # go back to car message needed
+				
 	
 	moved = handleMovement()
 	
@@ -92,6 +93,7 @@ func _input(event):
 			reset()
 			
 		updateHud()
+	#$Player/Human/Label.visible = false
 	
 func handleMovement():		
 	# Check move viability

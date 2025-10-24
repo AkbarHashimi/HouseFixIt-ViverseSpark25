@@ -23,6 +23,14 @@ texture = ExtResource("1_p0vlq")
 [node name="Camera2D" type="Camera2D" parent="Human"]
 zoom = Vector2(2, 2)
 
+[node name="Label" type="Label" parent="Human"]
+visible = false
+offset_left = -104.0
+offset_top = -35.0
+offset_right = 182.0
+offset_bottom = -12.0
+text = "Cannot use X unless you're at the car"
+
 [node name="Car" type="Area2D" parent="."]
 monitoring = false
 monitorable = false
