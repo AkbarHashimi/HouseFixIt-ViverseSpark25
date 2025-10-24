@@ -183,3 +183,4 @@ func resetFuelZones():
 
 func add_score():
 	score += 1
+	updateHud()
