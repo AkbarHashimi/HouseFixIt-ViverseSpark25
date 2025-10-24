@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://chi1n4h0b5pjr"]
+[gd_scene load_steps=6 format=3 uid="uid://chi1n4h0b5pjr"]
 
 [ext_resource type="Script" uid="uid://8r2o4thtxdf5" path="res://scripts/main.gd" id="1_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://dr7d2wkxq0vq5" path="res://scenes/level.tscn" id="1_rvslj"]
 [ext_resource type="PackedScene" uid="uid://cdre0icif2jfu" path="res://scenes/Player.tscn" id="2_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://dg0s08q6nedvi" path="res://scenes/House.tscn" id="4_rarhs"]
+[ext_resource type="PackedScene" uid="uid://cc011qdgpxt7e" path="res://scenes/HUD.tscn" id="5_vcsgt"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0bbpv")
@@ -19,3 +20,6 @@ collision_mask = 0
 [node name="House2" parent="." instance=ExtResource("4_rarhs")]
 
 [node name="House3" parent="." instance=ExtResource("4_rarhs")]
+
+[node name="Hud" parent="." instance=ExtResource("5_vcsgt")]
+follow_viewport_enabled = false

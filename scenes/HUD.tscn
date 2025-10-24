@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://jyqi1bmj7p8e" path="res://assets/clock.png" id="4_7hsmw"]
 
 [node name="Hud" type="CanvasLayer"]
+follow_viewport_enabled = true
 script = ExtResource("1_nysna")
 
 [node name="GridContainer" type="GridContainer" parent="."]
