@@ -136,9 +136,6 @@ func updateHud():
 	hud.change_time(timer)
 	hud.change_score(score)
 
-func add_traffic_penalty(penalty_cost):
-	timer -= penalty_cost
-	updateHud()
 func resetTimer():
 	timer = full_time
 	day += 1
@@ -147,7 +144,7 @@ func resetHouses():
 	get_tree().call_group("House", "disable_house")
 	
 	if (day % 2 == 0):
-		num_houses += 1 # difficulty increases
+		num_houses += 2 # difficulty increases
 	
 	# temporary check to prevent crashing
 	if (num_houses > houses.size()):
@@ -183,4 +180,8 @@ func resetFuelZones():
 
 func add_score():
 	score += 1
-	updateHud()
+	hud.change_score(score)
+
+func add_traffic_penalty(penalty_cost):
+	timer -= penalty_cost
+	hud.change_time(timer)

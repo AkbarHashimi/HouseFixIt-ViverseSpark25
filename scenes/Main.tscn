@@ -15,11 +15,41 @@ collision_mask = 0
 
 [node name="Level" parent="." instance=ExtResource("1_rvslj")]
 
-[node name="House" parent="." instance=ExtResource("4_rarhs")]
-
-[node name="House2" parent="." instance=ExtResource("4_rarhs")]
-
-[node name="House3" parent="." instance=ExtResource("4_rarhs")]
-
 [node name="Hud" parent="." instance=ExtResource("5_vcsgt")]
 follow_viewport_enabled = false
+
+[node name="House" parent="." instance=ExtResource("4_rarhs")]
+position = Vector2(16, 226)
+
+[node name="House2" parent="." instance=ExtResource("4_rarhs")]
+position = Vector2(43, 298)
+
+[node name="House3" parent="." instance=ExtResource("4_rarhs")]
+position = Vector2(18, 79)
+
+[node name="House4" parent="." instance=ExtResource("4_rarhs")]
+position = Vector2(304, 114)
+
+[node name="House5" parent="." instance=ExtResource("4_rarhs")]
+position = Vector2(210, 209)
+
+[node name="House6" parent="." instance=ExtResource("4_rarhs")]
+position = Vector2(210, 270)
+
+[node name="House7" parent="." instance=ExtResource("4_rarhs")]
+position = Vector2(110, 268)
+
+[node name="House8" parent="." instance=ExtResource("4_rarhs")]
+position = Vector2(293, 230)
+
+[node name="House9" parent="." instance=ExtResource("4_rarhs")]
+position = Vector2(212, 81)
+
+[node name="House10" parent="." instance=ExtResource("4_rarhs")]
+position = Vector2(149, 109)
+
+[node name="House11" parent="." instance=ExtResource("4_rarhs")]
+position = Vector2(356, 292)
+
+[node name="House12" parent="." instance=ExtResource("4_rarhs")]
+position = Vector2(337, 49)
