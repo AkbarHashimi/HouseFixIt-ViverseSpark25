@@ -117,22 +117,32 @@ func handleMovement():
 	#Move player or human		
 	if(player.playerState == "car"):
 		if (move_x < 0):
-			player.scale.x = -1
-			player.rotation_degrees = 0
+			car.scale.x = -1
+			car.rotation_degrees = 0
 		else:
-			player.scale.x = 1
-			player.rotation_degrees = 0
+			car.scale.x = 1
+			car.rotation_degrees = 0
 		if (move_y > 0):
-			player.rotation_degrees = 90
+			car.rotation_degrees = 90
+			car.scale.x = 1
 		elif (move_y < 0):
-			player.rotation_degrees=-90
+			car.rotation_degrees = 90
+			car.scale.x = -1
 		player.global_translate(Vector2(move_x, move_y))
 		
 	elif(player.playerState == "human"):
 		if (move_x < 0):
 			human.scale.x = -1
+			human.rotation_degrees = 0
 		else:
 			human.scale.x = 1
+			human.rotation_degrees = 0
+		if (move_y > 0):
+			human.rotation_degrees = 90
+			human.scale.x = 1
+		elif (move_y < 0):
+			human.rotation_degrees = 90
+			human.scale.x = -1
 		human.global_translate(Vector2(move_x, move_y))
 	return true
 
