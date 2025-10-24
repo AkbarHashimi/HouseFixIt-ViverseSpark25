@@ -20,7 +20,7 @@ const tile_size: int = 64
 @onready var houses = get_tree().get_nodes_in_group("House")
 @onready var fuel_zones = get_tree().get_nodes_in_group("Fuel_Zone")
 
-
+var moved: bool
 var num_houses: int = 2 # increases each day
 var num_fuel_zones: int = 4 # decreases some days?
 
@@ -45,11 +45,7 @@ func _ready():
 	# setup houses
 	resetHouses()
 
-func _process(delta):
-	#if (delay > 0):
-	#	delay -= 1
-	#	return
-		
+func _input(event):
 	move_x = 0
 	move_y = 0
 	
@@ -77,7 +73,7 @@ func _process(delta):
 			else:
 				pass # go back to car message needed
 	
-	var moved: bool = handleMovement()
+	moved = handleMovement()
 	
 	if moved:	
 		handleGas()
