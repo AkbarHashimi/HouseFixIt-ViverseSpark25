@@ -138,7 +138,7 @@ func updateHud():
 
 func add_traffic_penalty(penalty_cost):
 	timer -= penalty_cost
-
+	updateHud()
 func resetTimer():
 	timer = full_time
 	day += 1
