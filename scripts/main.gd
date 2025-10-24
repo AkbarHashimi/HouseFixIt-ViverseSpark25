@@ -232,7 +232,7 @@ func add_traffic_penalty(penalty_cost):
 		
 		if timer <= 0:
 			reset()
-		elif gas <= 0:
+		if gas <= 0:
 			reset()
 		updateHud()
 		
