@@ -7,14 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://jyqi1bmj7p8e" path="res://assets/clock.png" id="4_7hsmw"]
 
 [node name="Hud" type="CanvasLayer"]
-follow_viewport_enabled = true
 script = ExtResource("1_nysna")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 808.0
-offset_top = 72.0
-offset_right = 882.0
-offset_bottom = 149.0
+offset_left = 1144.0
+offset_top = 59.0
+offset_right = 1219.0
+offset_bottom = 163.0
 scale = Vector2(2, 2)
 columns = 2
 
