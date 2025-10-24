@@ -25,6 +25,7 @@ const tile_size: int = 64
 var moved: bool
 var num_houses: int = 2 # increases each day
 var num_fuel_zones: int = 4 # decreases some days?
+var max_house: int = 12
 
 var max_tank: int = 50 # decreases on some days?
 var gas: int = max_tank
@@ -169,10 +170,9 @@ func resetHouses():
 	
 	if (day % 2 == 0):
 		num_houses += 2 # difficulty increases
-	
 	# temporary check to prevent crashing
 	if (num_houses > houses.size()):
-		return
+		num_houses = houses.size()
 	
 	for i in range(0, num_houses):
 		# get random number
